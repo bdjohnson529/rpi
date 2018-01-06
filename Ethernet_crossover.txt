@@ -1,0 +1,24 @@
+-----
+Connect to RPi with Crossover Ethernet Cable
+Ben Johnson
+January 6, 2017
+-----
+
+1. Connect the RPi and laptop with the crossover cable.
+
+2. Discover the laptop's ethernet IP address.
+	$ ifconfig
+
+3. Set the Pi to have a permanent IP address in the same subdirectory.
+	$ sudo nano /etc/dhcpcd.conf
+	
+	interface eth0
+	static ip_address=10.42.0.10/24
+	static ip6_address= x
+	static routers=10.42.0.1
+	static domain_name_servers = 10.42.0.1 8.8.8.8 x
+
+Note static ip_address and domain_name servers are
+the laptop's ip_address.
+
+	$ sudo reboot
