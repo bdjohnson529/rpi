@@ -8,9 +8,13 @@ January 6, 2017
 
 2. Discover the laptop's ethernet IP address.
 	$ ifconfig
+	10.42.0.1
 
-3. Set the Pi to have a permanent IP address in the same subdirectory.
-	$ sudo nano /etc/dhcpcd.conf
+3. Set the Pi to have a permanent IP address. Note the
+Pi's subdirectory must match the subdirectory of the laptop.
+
+-----
+/etc/dhcpcd.conf
 	
 	interface eth0
 	static ip_address=10.42.0.10/24
@@ -18,7 +22,10 @@ January 6, 2017
 	static routers=10.42.0.1
 	static domain_name_servers = 10.42.0.1 8.8.8.8 x
 
-Note static ip_address and domain_name servers are
-the laptop's ip_address.
 
-	$ sudo reboot
+4. Edit the laptop's connection settings.
+	IPV4 --> shared to other computers.
+
+
+5. Ping RPi from the laptop to confirm connection. The RPi should be
+able to connect to the internet using the computer's internet connection.
